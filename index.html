@@ -3,9 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="./css/style.css">
+
     <title>Velvet Room</title>
 </head>
 <body>
+    <h1>Velvet Room</h1>
+
+    <div id="form-shifts-container">
+        <h2>¡Agendá tu turno!</h2>
+
+        <form>
+            <div id="field">
+                <label for="name">Ingrese su nombre</label>
+                <input type="text" name="name" id="name" required>
+            </div>
+
+            <div id="field">
+                <label for="lastname">Ingrese su apellido</label>
+                <input type="text" name="lastname" id="lastname" required>
+            </div>
+
+            <div id="field">
+                <label for="options">Elija el tratamiento</label>
+                <select name="options" id="options" required>
+                    <option value="">Seleccione una opción...</option>
+                </select>
+            </div>
+
+            <div id="field">
+                <label for="date">Elija la fecha</label>
+                <input type="date" name="date" id="date" required>
+            </div>
+
+            <div id="field">
+                <label for="time">Elija la hora</label>
+                <input type="time" name="time" id="time">
+            </div>
+
+            <button type="submit">Reservar turno</button>
+        </form>
+    </div>
+
+    <div id="list-shifts-container">
+        <h2>Tus turnos son ...</h2>
+
+        <div id="list-shifts"></div>
+    </div>
+
+    <!-- JS -->
     <script src="./js/main.js"></script>
 </body>
 </html>
