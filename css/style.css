@@ -3,18 +3,72 @@
     padding: 0;
 }
 
+/*Header*/
+nav {
+  background-color: #fadadc;
+}
+nav .nav-link {
+  color: #bb111c;
+  transition: all 0.2s linear;
+}
+nav .nav-link:hover {
+  color: #56060a;
+  transform: scale(1.03);
+}
+nav .navbar-brand {
+  color: #bb111c;
+  transition: all 0.2s linear;
+}
+nav .navbar-brand:hover {
+  color: #56060a;
+  transform: scale(1.03);
+}
+nav .navbar-brand img {
+  animation: shake 0.4s ease-in-out infinite;
+  animation-delay: 0.5s;
+}
+nav .navbar-toggler-icon {
+  background-image: none;
+  width: 25px;
+  height: 3px;
+  background-color: #bb111c;
+  position: relative;
+  border-radius: 5px;
+}
+nav .navbar-toggler-icon::before,
+nav .navbar-toggler-icon::after {
+  content: "";
+  position: absolute;
+  width: 25px;
+  height: 3px;
+  background-color: #bb111c;
+  left: 0;
+  transition: all 0.3s;
+  border-radius: 5px;
+}
+nav .navbar-toggler-icon::before {
+  top: -6px;
+}
+nav .navbar-toggler-icon::after {
+  top: 6px;
+}
+
+
+
 h1{
     text-align: center;
-    padding: 5px;
+    padding: 10px;
 }
 
 #form-shifts-container{
     width: fit-content;
-    justify-content: center;
     margin: 20px auto;
     padding: 20px 50px;
-    border: 2px solid ;
+    border: 2px solid #e8b9c0;
     border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    background-color: #fadadc6f;
 }
 
 #form-shifts-container h2{
@@ -31,4 +85,16 @@ h1{
 #field input, select{
     padding: 5px;
     margin-top: 5px;
+    border: 2px solid #e8b9c0;
+    border-radius: 3px;
+    background-color: #e8b9c04b;
+}
+
+#button-form{
+    display: block;
+    margin: 10px auto;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid #e8b9c0;
+    background-color: #e8b9c04b;
 }
