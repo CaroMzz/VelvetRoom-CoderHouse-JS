@@ -98,3 +98,32 @@ h1{
     border: 1px solid #e8b9c0;
     background-color: #e8b9c04b;
 }
+
+#button-form:hover{
+    border: 1px solid #eea2ae;
+    background-color: #e8b9c0;
+}
+
+#list-shifts-container h2{
+  margin-left: 10px;
+}
+
+.shift-table{
+  width:95%;
+  margin: 20px auto;
+  border: 2px solid #e8b9c0;
+}
+
+.shift-table th{
+  background-color: #fadadc;
+  text-align: center;
+  border: 2px solid #e8b9c0;
+  padding: 10px;
+}
+
+.shift-table td{
+  background-color:#fadadc6f;
+  text-align: center;
+  border: 2px solid #e8b9c0;
+  padding: 5px;
+}

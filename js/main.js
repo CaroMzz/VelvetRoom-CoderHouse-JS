@@ -25,14 +25,56 @@ function renderShifts() {
     showAsignedShifts.innerHTML = "<p>No hay turnos agendados.</p>";
     return;
   }
-    showAsignedShifts.innerHTML = asignedShifts.map(shift => `
-        <div class="shift-item">
-            <p><strong>Nombre:</strong> ${shift.name} ${shift.lastname}</p>
-            <p><strong>Tratamiento:</strong> ${shift.treatment}</p>
-            <p><strong>Fecha:</strong> ${shift.date}</p>
-            <p><strong>Hora:</strong> ${shift.time}</p>
-            <hr>
-        </div>`).join('');}
+  let tableHtml = `
+    <table class = "shift-table">
+        <thread>
+            <tr>
+                <th>Nombre y Apellido</th>
+                <th>Tratamiento</th>
+                <th>Fecha</th>
+                <th>Hora</th>
+            </tr>
+        </thread>
+        <tbody>`;
+
+  tableHtml += asignedShifts.map(shift => `
+    <tr>
+        <td>${shift.name} ${shift.lastname}</td>
+        <td>${shift.treatment}</td>
+        <td>${shift.date}</td>
+        <td>${shift.time}</td>
+    </tr>`).join('');
+
+  tableHtml += `
+      </tbody>
+    </table>`;
+
+  showAsignedShifts.innerHTML = tableHtml}
+
+renderShifts();
 
 
 //Save form
+const form = document.querySelector('form');
+
+form.addEventListener('submit', function(){
+    const name = document.getElementById('name').value;
+    const lastname = document.getElementById('lastname').value;
+    const treatment = document.getElementById('options').value;
+    const date = document.getElementById('date').value;
+    const time = document.getElementById('time').value;
+
+    const newShift = {
+        name: name,
+        lastname: lastname,
+        treatment: treatment,
+        date: date,
+        time: time
+    };
+
+    asignedShifts.push(newShift);
+
+    localStorage.setItem("shifts", JSON.stringify(asignedShifts));
+
+    renderShifts();
+})
