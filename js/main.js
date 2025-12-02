@@ -2,10 +2,14 @@
 const treatments = [
   { name: "Corte de flequillo", price: 8000 },
   { name: "Corte de pelo", price: 17000 },
-  { name: "Keratina", price: 33000 },
+  { name: "Alisado", price: 33000 },
   { name: "Claritos", price: 48000 },
   { name: "Tintura completa", price: 40000 },
-  { name: "Tintura raices", price: 27000 }
+  { name: "Tintura raices", price: 27000 },
+  { name: "Capping gel", price: 25000 },
+  { name: "Manicura semipermanente", price: 20000 },
+  { name: "Depilación de rostro", price: 12000 },
+  { name: "Depilación de piernas", price: 14000 }
 ];
 
 const selectForm = document.getElementById('options');
