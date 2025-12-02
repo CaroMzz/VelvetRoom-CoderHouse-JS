@@ -6,6 +6,7 @@
 
     <!-- CSS -->
     <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/inicio.css">
 
     <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
@@ -49,46 +50,46 @@
 
     <h1>Bienvenida/o a Velvet Room</h1>
 
-    <div id="form-shifts-container">
-        <h2>¡Agendá tu turno!</h2>
-
-        <form>
-            <div id="field">
-                <label for="name">Ingrese su nombre</label>
-                <input type="text" name="name" id="name" required>
+    <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+            <img src="./assets/carrusel1.png" class="d-block w-100" alt="carrusel imagen 1">
             </div>
-
-            <div id="field">
-                <label for="lastname">Ingrese su apellido</label>
-                <input type="text" name="lastname" id="lastname" required>
+            <div class="carousel-item">
+            <img src="./assets/carrusel2.png" class="d-block w-100" alt="carrusel imagen 2">
             </div>
-
-            <div id="field">
-                <label for="options">Elija el tratamiento</label>
-                <select name="options" id="options" required>
-                    <option value="">Seleccione una opción...</option>
-                </select>
+            <div class="carousel-item">
+            <img src="./assets/carrusel3.png" class="d-block w-100" alt="carrusel imagen 3">
             </div>
-
-            <div id="field">
-                <label for="date">Elija la fecha</label>
-                <input type="date" name="date" id="date" required>
-            </div>
-
-            <div id="field">
-                <label for="time">Elija la hora</label>
-                <input type="time" name="time" id="time">
-            </div>
-
-            <button  id="button-form" type="submit">Reservar turno</button>
-        </form>
+        </div>
     </div>
 
-    <div id="list-shifts-container">
-        <h2>Tus turnos son ...</h2>
+    <section id="about-us" class="about-section">
+        <div class="about-container">
+            <div class="about-text">
+                <h2>Sobre nosotros</h2>
+                <p>
+                    En nuestro espacio creemos que la belleza empieza por sentirse bien. Por eso 
+                    trabajamos para que cada visita sea una experiencia cómoda, personalizada y llena de cuidado.
+                </p>
 
-        <div id="list-shifts"></div>
-    </div>
+                <p>
+                    Somos un equipo apasionado por el estilo, la estética y el bienestar, comprometido con 
+                    ofrecer resultados que destaquen lo mejor de cada persona. Nos capacitamos constantemente 
+                    para aplicar las últimas tendencias en peluquería, uñas y tratamientos estéticos, 
+                    utilizando productos de calidad profesional y técnicas seguras.
+                </p>
+
+                <p>
+                    Nuestro objetivo es que salgas feliz, renovada y con la confianza de saber que tu imagen 
+                    está en manos expertas. Cada detalle importa, y por eso dedicamos tiempo a escuchar tus 
+                    gustos y lo que querés lograr, para acompañarte en el cambio que buscás.
+                </p>
+
+                <h3 class="slogan">Tu momento de cuidado empieza acá.</h3>
+            </div>
+        </div>
+    </section>
 
     <!-- JS -->
     <script src="./js/main.js"></script>
