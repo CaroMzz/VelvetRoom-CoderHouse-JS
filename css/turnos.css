@@ -65,3 +65,18 @@
   border: 2px solid #e8b9c0;
   padding: 5px;
 }
+
+.btn-velvet {
+  color: rgb(0, 0, 0);
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+}
+
+#delete{
+  background-color: #f8878f; 
+}
+
+#modify{
+  background-color: #f8a9ae; 
+}

@@ -37,23 +37,53 @@ function renderShifts() {
                 <th>Tratamiento</th>
                 <th>Fecha</th>
                 <th>Hora</th>
+                <th>Acciones</th>
             </tr>
         </thread>
         <tbody>`;
 
-  tableHtml += asignedShifts.map(shift => `
+  tableHtml += asignedShifts.map((shift,index) => `
     <tr>
-        <td>${shift.name} ${shift.lastname}</td>
-        <td>${shift.treatment}</td>
-        <td>${shift.date}</td>
-        <td>${shift.time}</td>
+      <td>${shift.name} ${shift.lastname}</td>
+      <td>${shift.treatment}</td>
+      <td>${shift.date}</td>
+      <td>${shift.time}</td>
+      <td>
+        <button class="btn-velvet" id="modify" onclick="editShift(${index})">Modificar</button>
+        <button class="btn-velvet" id="delete" onclick="deleteShift(${index})">Eliminar</button>
+      </td>
     </tr>`).join('');
 
   tableHtml += `
       </tbody>
     </table>`;
 
-  showAsignedShifts.innerHTML = tableHtml}
+  showAsignedShifts.innerHTML = tableHtml;}
+
+//Delete shift
+window.deleteShift = function(index) {
+  if (confirm("¿Estás seguro de que deseas eliminar este turno?")) {
+    asignedShifts.splice(index, 1);
+    localStorage.setItem("shifts", JSON.stringify(asignedShifts)); 
+    renderShifts(); 
+  }
+};
+
+//Modify shift
+window.editShift = function(index) {
+  const shift = asignedShifts[index];
+
+  asignedShifts.splice(index, 1);
+
+  document.getElementById('name').value = shift.name;
+  document.getElementById('lastname').value = shift.lastname;
+  document.getElementById('options').value = shift.treatment;
+  document.getElementById('date').value = shift.date;
+  document.getElementById('time').value = shift.time;
+
+  
+  alert("Los datos se han cargado en el formulario. Realiza los cambios y presiona 'Reservar turno' para guardar.");
+};
 
 renderShifts();
 
