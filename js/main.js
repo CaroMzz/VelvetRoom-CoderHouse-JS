@@ -57,28 +57,64 @@ function renderShifts() {
 
 renderShifts();
 
+//Validación de la fecha
+const dateInput = document.getElementById('date');
+if (dateInput) {
+    const today = new Date().toISOString().split('T')[0];
+    dateInput.setAttribute('min', today);
+}
 
 //Save form
 const form = document.querySelector('form');
 
-form.addEventListener('submit', function(){
-    const name = document.getElementById('name').value;
-    const lastname = document.getElementById('lastname').value;
-    const treatment = document.getElementById('options').value;
-    const date = document.getElementById('date').value;
-    const time = document.getElementById('time').value;
+form.addEventListener('submit', function(event){
+  event.preventDefault();
 
-    const newShift = {
-        name: name,
-        lastname: lastname,
-        treatment: treatment,
-        date: date,
-        time: time
-    };
+  const name = document.getElementById('name').value.trim();
+  const lastname = document.getElementById('lastname').value.trim();
+  const treatment = document.getElementById('options').value;
+  const date = document.getElementById('date').value;
+  const time = document.getElementById('time').value;
 
-    asignedShifts.push(newShift);
+  //Validaciones del formulario
+  if (!name || !lastname || !treatment || !date || !time) {
+    alert("Por favor, completa todos los campos.");
+    return;
+  }
 
-    localStorage.setItem("shifts", JSON.stringify(asignedShifts));
+  const soloLetras = /^[a-zA-ZÁÉÍÓÚáéíóúÑñ\s]+$/;
+  if (!soloLetras.test(name)) {
+    alert("El nombre solo puede contener letras.");
+    return; 
+  }
+  if (!soloLetras.test(lastname)) {
+    alert("El apellido solo puede contener letras.");
+    return; 
+  }
 
-    renderShifts();
+  const isDuplicate = asignedShifts.some(shift => 
+    shift.date === date && shift.time === time
+  );
+
+  if (isDuplicate) {
+    alert("Lo sentimos, este horario ya está reservado. Por favor elige otro.");
+    return;
+  }
+
+  const newShift = {
+    name: name,
+    lastname: lastname,
+    treatment: treatment,
+    date: date,
+    time: time
+  };
+
+  asignedShifts.push(newShift);
+
+  localStorage.setItem("shifts", JSON.stringify(asignedShifts));
+
+  renderShifts();
+
+  form.reset();
+  alert("¡Turno reservado con éxito!");
 })
