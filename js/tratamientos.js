@@ -11,10 +11,11 @@ const treatments = [
   { name: "Depilación de piernas", price: 14000, category: "depilacion", description: "Eliminación del vello de las piernas (entera o media pierna) mediante el uso de cera, asegurando una piel tersa y libre de vello por más tiempo.", image: "../assets/foto-depilacion-pierna" }
 ];
 
-function generateCard() {
+function generateCard(data) {
   const container = document.getElementById("treatments-cards");
+  container.innerHTML = "";
 
-  treatments.forEach(treatment => {
+  data.forEach(treatment => {
     const card = document.createElement("div");
     card.className = "card w-100 mb-3";
 
@@ -72,4 +73,17 @@ function generateCard() {
   });
 }
 
-generateCard();
+const selectFilter = document.getElementById("filter-category");
+
+selectFilter.addEventListener("change", (e) => {
+  const selectedCategory = e.target.value;
+  
+  if (selectedCategory === "todos") {
+    generateCard(treatments);
+  } else {
+    const filtered = treatments.filter(t => t.category === selectedCategory);
+    generateCard(filtered);
+  }
+});
+
+generateCard(treatments);
