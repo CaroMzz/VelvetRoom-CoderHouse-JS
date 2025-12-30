@@ -81,40 +81,47 @@ window.deleteShift = function (index) {
     cancelButtonText: "Cancelar",
   }).then((result) => {
     if (result.isConfirmed) {
-      asignedShifts.splice(index, 1);
-      localStorage.setItem("shifts", JSON.stringify(asignedShifts));
-      renderShifts();
-      Swal.fire({
-        title: "Eliminado",
-        text: "El turno ha sido borrado con éxito.",
-        icon: "success",
-        confirmButtonColor: "#f8a9ae",
-        confirmButtonText: "Entendido",
-      });
+      try {
+        asignedShifts.splice(index, 1);
+        localStorage.setItem("shifts", JSON.stringify(asignedShifts));
+        renderShifts();
+        Swal.fire({
+          title: "Eliminado",
+          text: "El turno ha sido borrado con éxito.",
+          icon: "success",
+          confirmButtonColor: "#f8a9ae",
+          confirmButtonText: "Entendido",
+        });
+      } catch (error) {
+        console.error("Error al eliminar el turno:", error);
+      }
     }
   });
 };
 
 //Modify shift
 window.editShift = function (index) {
-  const shift = asignedShifts[index];
+  try {
+    const shift = asignedShifts[index];
+    asignedShifts.splice(index, 1);
 
-  asignedShifts.splice(index, 1);
+    document.getElementById("name").value = shift.name;
+    document.getElementById("lastname").value = shift.lastname;
+    document.getElementById("options").value = shift.treatment;
+    document.getElementById("date").value = shift.date;
+    document.getElementById("time").value = shift.time;
 
-  document.getElementById("name").value = shift.name;
-  document.getElementById("lastname").value = shift.lastname;
-  document.getElementById("options").value = shift.treatment;
-  document.getElementById("date").value = shift.date;
-  document.getElementById("time").value = shift.time;
-
-  Swal.fire({
-    title: "Modo Edición",
-    text: "Los datos se han cargado en el formulario. Realiza los cambios y presiona 'Reservar turno'.",
-    icon: "info",
-    iconColor: "#ecab0f",
-    confirmButtonColor: "#f8a9ae",
-    confirmButtonText: "Entendido",
-  });
+    Swal.fire({
+      title: "Modo Edición",
+      text: "Los datos se han cargado en el formulario. Realiza los cambios y presiona 'Reservar turno'.",
+      icon: "info",
+      iconColor: "#ecab0f",
+      confirmButtonColor: "#f8a9ae",
+      confirmButtonText: "Entendido",
+    });
+  } catch (error) {
+    console.error("Error al cargar los datos para edición:", error);
+  }
 };
 
 renderShifts();
